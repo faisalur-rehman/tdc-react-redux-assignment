@@ -1,0 +1,20 @@
+.sidebar{
+    background-color: rgb(65, 122, 245);
+    min-height: 88vh;
+    width: 200px;
+}
+.sidebar ul li{
+    cursor: pointer;
+    padding: 10px ;
+}
+.sidebar ul a{
+    color: white;
+
+}
+.sidebar ul li:hover{
+    background-color: rgb(59, 59, 247);
+    
+}
+.sidebar ul li.active{
+    background-color: rgb(14, 14, 145);
+}
