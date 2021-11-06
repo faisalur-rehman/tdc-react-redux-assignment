@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllCountriesData } from "../../store/features/countriesData";
 import { Input } from "antd";
@@ -51,39 +51,37 @@ const columns = [
 ];
 
 const CountriesData = () => {
+    const [search, setSearch] = useState('')
   const countries = useSelector((state) => state.countries);
   const dispatch = useDispatch();
-  console.log("countries", countries);
   useEffect(() => {
     dispatch(fetchAllCountriesData);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  function onChange(pagination, filters, sorter, extra) {
-    console.log("params", pagination, filters, sorter, extra);
+  }, [search]);
+
+  function handleSearch() {
+      dispatch({type:"data/search",payload:search})
   }
-  const onSearch = (value) => {
-    dispatch({ type: "data/search", payload: value });
-  };
 
   return (
     <Layout active={2}>
-        <div >
-
-      <p className="search">
-        Search:{" "}
-        <span>
-          <Search
-            placeholder="Country Name"
-            onSearch={onSearch}
-            style={{ width: 200 }}
+      <div>
+        <p className="search">
+          Search:{" "}
+          <span>
+            <Search
+              placeholder="Country Name"
+              onChange={({target})=>setSearch(target.value)}
+              onSearch={handleSearch}
+              style={{ width: 200 }}
             />
-        </span>
-      </p>
-      {countries.length > 0 && (
-          <Table columns={columns} dataSource={countries} onChange={onChange} />
-          )}
-          </div>
+          </span>
+        </p>
+        {countries.length > 0 && (
+          <Table columns={columns} dataSource={countries} />
+        )}
+      </div>
     </Layout>
   );
 };

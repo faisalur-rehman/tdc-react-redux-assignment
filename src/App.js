@@ -1,6 +1,6 @@
 import "./App.css";
 import Header from "./components/Header/Header";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import GlobalData from "./components/GlobalData/GlobalData";
 import CountriesData from "./components/CountriesData/CountriesData";
 function App() {
