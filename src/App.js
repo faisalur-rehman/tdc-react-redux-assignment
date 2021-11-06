@@ -10,12 +10,10 @@ function App() {
       <Router>
         <Routes>
           <Route exact path="/" element={<GlobalData />} />
-            
+
           <Route exact path="/countries-data" element={<CountriesData />} />
-            
         </Routes>
       </Router>
-      {/* <GlobalData /> */}
     </div>
   );
 }
