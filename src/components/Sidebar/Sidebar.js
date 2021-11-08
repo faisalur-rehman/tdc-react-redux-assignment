@@ -1,17 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./Sidebar.css";
 
-const Sidebar = ({ active }) => {
+const Sidebar = () => {
   return (
     <div className="sidebar">
       <ul>
-        <Link to="/">
-          <li className={active == 1 ? "active" : ""}>Global Statistics</li>
-        </Link>
-        <Link to="/countries-data">
-          <li className={active == 2 ? "active" : ""}>Countries Statistics</li>
-        </Link>
+        <NavLink
+          to="/"
+          className={(navData) => (navData.isActive ? "active" : "")}
+        >
+          <li>Global Statistics</li>
+        </NavLink>
+        <NavLink
+          to="/countries-data"
+          className={(navData) => (navData.isActive ? "active" : "hello")}
+        >
+          <li>Countries Statistics</li>
+        </NavLink>
       </ul>
     </div>
   );
